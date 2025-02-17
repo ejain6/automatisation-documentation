@@ -15,11 +15,11 @@ done
 docker container cp doc.md sae103-forever:/work
 
 #Transfer des fichiers gendoc-tech.php, gendoc-user.php, les css et config
-docker container cp .ressources/gendoc-tech.php sae103-forever:/work
-docker container cp .ressources/gendoc-user.php sae103-forever:/work
-docker container cp .ressources/config sae103-forever:/work
-docker container cp .ressources/style.css sae103-forever:/work
-docker container cp .ressources/style_doc_user.css sae103-forever:/work
+docker container cp ressources/gendoc-tech.php sae103-forever:/work
+docker container cp ressources/gendoc-user.php sae103-forever:/work
+docker container cp ressources/config sae103-forever:/work
+docker container cp ressources/style.css sae103-forever:/work
+docker container cp ressources/style_doc_user.css sae103-forever:/work
 
 docker exec sae103-forever sh /work chmod +x gendoc-user.php
 docker exec sae103-forever sh /work chmod +x gendoc-tech.php
