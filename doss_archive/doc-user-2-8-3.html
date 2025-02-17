@@ -1,0 +1,190 @@
+
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style_doc_user.css">
+        <title>Documentation utilisateur</title>
+    </head>
+    <body>
+
+    <h1 id = "titre">
+ Documentation utilisateur de l'outil de documentation des programmes en langage C
+</h1>
+<br>
+<p>
+<i>Dernière modification : 18/02/2024</i>
+</p>
+<p>
+<i>Auteur : Ewen JAIN</i>
+</p>
+<br>
+<h2>
+ Sommaire
+</h2>
+<ul><li>
+ <a href = '#titre'>Introduction à l'outil</a>
+</li>
+<ul>
+<li>
+     <a href = '#titre'>Pourquoi utiliser notre produit ?</a>
+</li>
+<li>
+     <a href = '#titre'>Comment utiliser notre produit ?</a>
+</li>
+<br>
+</ul>
+<li>
+ <a href = '#titre'>Documentation du code</a>
+</li>
+<ul>
+<li>
+     <a href = '#titre'>Documentation des fonctions / procédures</a>
+</li>
+<li>
+     <a href = '#titre'>Documentation des autres éléments</a>
+</li>
+<ul>
+<li>
+         <a href = '#titre'>Pour une variable globale</a>
+</li>
+<li>
+         <a href = '#titre'>#define / constantes</a>
+</li>
+<li>
+         <a href = '#titre'>Structures</a>
+</li>
+<br>
+</ul>
+</ul>
+</ul>
+<h2>
+ Introduction à l'outil
+</h2>
+<p>
+Bienvenue dans la docummentation de notre outil de docummentation pour programme C. Cette ressource vous guidera dans l'utilisisation efficace de cet outil avec des instructions de mise en place et d'utilisation, afin d'optimiser vos processus de documentation.
+</p>
+<br>
+<h3>
+ Pourquoi utiliser notre produit ?
+</h3>
+<p>
+Notre outil de docummentation a été concu dans l'objectif de simplifier et d'améliorer significativement votre processus de documentation. Vous obtiendrez une organisation structurée de votre documentation en fonction des commentaires analysés afin de produire un rendu propre et professionel, améliorant la compréhension de votre code pour vous, votre équipe et vos clients.
+</p>
+<br>
+<h3>
+ Comment utiliser notre produit ? 
+</h3>
+<p>
+Notre générateur de documentation est simple d'utilisation, placez au minimum 1 fichier C dans le même dossier que le script bash, ainsi qu'un fichier markdown.
+</p>
+<p>
+Ensuite, executez simplement le script "gendoc.bash" (après l'avoir rendu executable) 
+</p>
+<br>
+<p>
+Le script génère une archive avec comme nom nom_client-version.tar.gz, ainsi qu'un dossier "doss_archive" actualisé à chaque execution, avec le même contenu a la seule différence qu'il n'est pas archivé.
+</p>
+<br>
+<p>
+Vous pouvez récupérer votre archive ou le dossier à l'emplacement où vous avez lancé le script Bash. 
+</p>
+<p>
+Il vous suffira ensuite d'extraire ou de récupérer le contenu du dossier, et vous y trouverez le(s) fichier(s) C originaux, ainsi que leur documentations, au formats HTML et PDF, en plus d'une documentation utilisateur de cet outil <i>(c'est vrai que ce n'est pas nécéssaire ici, mais c'etait demandé de générer une doc .md -> .html -> .pdf et que ce sera donc la même que celle que vous lisez actuellement, mais en html et en pdf...).</i>
+</p>
+<br>
+<h2>
+ Documentation du code
+</h2>
+<p>
+Le code a analyser doit respecter certaines contraintes (notamment de syntaxe) afin de génerer une documentation cohérente.
+</p>
+<br>
+<h3>
+ En-tête de programme
+</h3>
+<p>
+Chacun de vos fichiers doivent impérativement débuter par un commentaire en en-tête, et ce dès la 1ere ligne, afin que l'outil de documentation puisse analyser la suite du programme.
+</p>
+<p>
+L'en-tête, comme tout commentaire multi-ligne, aura la forme suivante:
+</p>
+<pre> /**
+ * Ce bloc est obligatoire !
+ * Ici devra être rédigé la description
+ * du contenu du fichier, ce que fait le 
+ * programme en globalité.
+ */
+</pre>
+<br>
+<h3>
+ Documentation des fonctions / procédures
+</h3>
+<table>
+<tr>
+<th>balise </th>
+<th>description </th>
+</tr><tr>
+<td> <b>\brief</b> </td>
+<td> courte phrase pour décrire <b>brièvement</b> le rôle de la fonction</td>
+</tr><tr>
+<td> <b>\detail</b> </td>
+<td> une description plus détaillée du role de la fonction et de son utilisation</td>
+</tr><tr>
+<td> <b>\return</b> </td>
+<td> explication du rôle de l'élément retourné par la fonction (sauf si c'est une procédure)</td>
+</tr><tr>
+<td> <b>\param</b> </td>
+<td> une balise différente doit être utilisée pour chaque paremètre d'entrée (et de sortie pour les procédures), elle détaillera donc le rôle de ces paramètre dans la fonction </td>
+</tr><br>
+</table>
+<h3>
+ Documentation des autres éléments
+</h3>
+<p>
+La syntaxe des commentaires ne change que peu en fonction des éléments concernés, de la forme : <code> /** commentaire */ </code> . 
+</p>
+<p>
+Celle des <a href = '#titre'>fonctions et procédure</a> est plus complexe que celle des <a href = '#titre'>autres éléments</a>, afin d'avoir toutes les informations nécessaires a propos des fonctions concernées, grace a l'utilisation des balises, qui vont donc générer un rendu plus précis dans la documentation.
+</p>
+<br>
+<h4>
+ Pour une variable globale
+</h4>
+<p>
+Pour qu'elles puissent correctement être prises en compte, les variables globales <b>doivent</b> être précédées d'un commentaire contenant "VARIABLES GLOBALES",
+</p>
+<p>
+puis une ligne vide doit être laissée après les avoir toutes définies.
+</p>
+<pre> /**VARIABLES GLOBALES*/
+int nbLignes = 0; /** nombre de lignes du tableau */
+int nbColonnes = 0; /** nombre de colonnes du tableau */
+</pre>
+<br>
+<h4>
+ Pour un #define ou une simple constante
+</h4>
+<p>
+Ces commentaires sont semblables à ceux des variables, mais ne nécessitent pas de commentaire particulier les précédant.
+</p>
+<pre> #define TAILLE 9 /** Définition de la taille des éléments utilisés dans le programme */
+</pre>
+<br>
+<h4>
+ Pour une structure
+</h4>
+<p>
+Pour commenter une structure, il faudra plusieurs commentaires : un après chaque élément de la structure, puis un après avoir fini sa définition, pour donner son rôle en globalité.
+</p>
+<pre> typedef struct {
+    char prenom[25];    /** prenom de l'utilisateur */
+    char pseudo[25];    /** pseudo de l'utilisateur */
+    int age;         /** age de l'utilisateur */
+} utilisateur;   /** Structure d'un utilisateur */
+</pre>
+
+</body>
+</html>
+

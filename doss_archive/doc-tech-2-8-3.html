@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Documentation Technique</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css?">
+    </head>
+    <body>
+        <main>
+            <header>
+                <h1 id="test">Documentation technique</h1>
+                <h2>Mr.Bourdon&co
+</h2>
+                <h2>Produit : Le programme programmé programmant
+</h2>
+                <h3>Version : 2.8.3 </h3>
+                <h4>Date : 17 Feb 2025 13:37:57</h4>
+            </header>
+            
+                <section>
+                    <article class="boxes-art">
+                        <header>
+                            <h1>src1.c</h1>
+                        </header>
+                        <dl>
+                            <dt>Table des matières :</dt>
+                            <dd><a href="#defines-0">.   DEFINES</a></dd>
+                            <dd><a href="#structures-0">.   STRUCTURES</a></dd>
+                            <dd><a href="#globales-0">.   GLOBALES</a></dd>
+                            <dd><a href="#fonctions-0">.   FONCTIONS</a></dd>
+                        </dl>
+                        <article class="boxes-art">
+                            <span id="defines-0">
+                                <hr>
+                                <h2>DEFINES</h2>
+                                <hr>
+                            </span>
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define CORPS_SNAKE '-' </p>
+                                    <p><p>corps du snake</p></p>
+                                </span>
+                            </article>
+                        
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define TETE_SNAKE 'B' </p>
+                                    <p><p>tete du snake</p></p>
+                                </span>
+                            </article>
+                        
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define DU_MANGER '*' </p>
+                                    <p><p>pomme à manger pour le snake (score)</p></p>
+                                </span>
+                            </article>
+                        
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define CASE_VIDE ' ' </p>
+                                    <p><p>case vide</p></p>
+                                </span>
+                            </article>
+                        
+                </article>
+                <article class="boxes-art">
+                    <span id="structures-0">
+                        <hr>
+                        <h2>STRUCTURES</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>struct uneCellule {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  int ligne; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  int colonne; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  struct uneCellule * suiv; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>typedef struct uneCellule uneCellule;</p><p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordonnées de ligne de la grille<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coordonnées de colonne de la grille<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boucle<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;structure de grille du jeu<br></p></span><span><p>struct unSnake {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  uneCellule * teteSnake; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  uneCellule * queueSnake; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>typedef struct unSnake unSnake;</p><p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tete du snake<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue du snake<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;structure d'apparence du snake<br></p></span><span><p>struct uneDirection {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  int ligne; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  int colonne; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>typedef struct uneDirection uneDirection; </p><p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction de ligne du snake<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;direction de colonne du snake<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;structure de direction du snake<br></p></span></article>
+                    </article><article class="boxes-art">
+                    <span id="globales-0">
+                        <hr>
+                        <h2>GLOBALES</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>char ** grille = NULL;<br>int nbLignes = 0;<br>int nbColonnes = 0;<br>int inutile = 0; <br></p><p>grille<br>ligne de grille<br>colonne de grille<br>mode lolilol<br></p></span></article>
+                    </article><article class="boxes-art">
+                    <span id="fonctions-0">
+                        <hr>
+                        <h2>FONCTIONS</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>unSnake creerSnake() 
+</p><p> \brief crée le snake<br> \detail donne une tete et une queue au snake et fait<br> en sorte que la queue suivent la tete du snake<br><br> \return unSnake le snake<br></p></span><span><p>void ajouterEnTete (unSnake * snake, int ligne, int colonne,int * aMange, int * fail) 
+</p><p> \brief permet au snake de bouger<br> \detail Redéfini la tête du snake aux coordonnées indiquées<br> gère les collisions avec les bords (sauf si mode lolilol) et le snake<br> vérifie si le snake mange quelque chose<br><br> \param unSnake le snake<br> \param int ligne de position du snake<br> \param int colonne de position du snake<br> \param int coordonner du manger<br> \param int état de défaite<br></p></span><span><p>void supprimerQueue(unSnake * snake) 
+</p><p> \brief Supprime la queue du snake à sa mort<br> \detail Supprime la queue du snake à sa mort<br><br> \param unSnake le snake<br></p></span><span><p>void initGrille() 
+</p><p> \brief charge une grille vide<br> \detail charge une grille vide<br></p></span><span><p>void afficherGrille(unSnake snake) 
+</p><p> \brief affiche la grille<br> \detail affiche la grille et le snake de base<br><br> \param unSnake le snake<br></p></span><span><p>void gererEvenement(unSnake * snake, int touche, int * fail, uneDirection * direction,int * aMange) 
+</p><p> \brief permet les controles de mouvement du snake<br> \detail change de direction au snake en fonction des touche appuier<br><br> \param unSnake le snake<br> \param int touche appuier<br> \param int état de défaite<br> \param uneDirection direction vers laquelle le snake vas<br> \param int cohordonnée du manger<br></p></span><span><p>void genererDuManger(char ** grille) 
+</p><p> \brief genere une case contenent 'DU_MANGER' à des coordonnées aléatoires<br> \detail donne de nouvelle cohordonnée au manger quand le précedant ce fait manger<br><br> \param char grille de jeu<br></p></span><span><p>void printFail() 
+</p><p> \brief affiche 'FAIL' a l'écran<br> \detail affiche 'FAIL' a l'écran<br></p></span><span><p>int main (int argc, char * argv []) 
+</p><p> \brief fonction principale du jeu<br> \detail fonction principale du jeu<br><br> \param int je sais pas<br> \param char je sais pas<br> \return 0<br></p></span></article></article></section>
+                <section>
+                    <article class="boxes-art">
+                        <header>
+                            <h1>src2.c</h1>
+                        </header>
+                        <dl>
+                            <dt>Table des matières :</dt>
+                            <dd><a href="#defines-1">.   DEFINES</a></dd>
+                            <dd><a href="#structures-1">.   STRUCTURES</a></dd>
+                            <dd><a href="#globales-1">.   GLOBALES</a></dd>
+                            <dd><a href="#fonctions-1">.   FONCTIONS</a></dd>
+                        </dl>
+                        <article class="boxes-art">
+                            <span id="defines-1">
+                                <hr>
+                                <h2>DEFINES</h2>
+                                <hr>
+                            </span>
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define HAUTEUR 6  </p>
+                                    <p><p> Hauteur du damier </p></p>
+                                </span>
+                            </article>
+                        
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define LARGEUR 7  </p>
+                                    <p><p> Largeur du damier </p></p>
+                                </span>
+                            </article>
+                        
+                </article>
+                <article class="boxes-art">
+                    <span id="structures-1">
+                        <hr>
+                        <h2>STRUCTURES</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"></article>
+                    </article><article class="boxes-art">
+                    <span id="globales-1">
+                        <hr>
+                        <h2>GLOBALES</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>char damier[LARGEUR][HAUTEUR]; <br>int joueur = 1; <br>int nbtokens = HAUTEUR * LARGEUR; <br>char symbols[2]; <br></p><p> Tableau représentant le damier <br> Variable pour suivre le joueur actuel <br> Nombre de jetons restants <br> Symboles utilisés pour les joueurs <br></p></span></article>
+                    </article><article class="boxes-art">
+                    <span id="fonctions-1">
+                        <hr>
+                        <h2>FONCTIONS</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"></article></article></section>
+                <section>
+                    <article class="boxes-art">
+                        <header>
+                            <h1>src3.c</h1>
+                        </header>
+                        <dl>
+                            <dt>Table des matières :</dt>
+                            <dd><a href="#defines-2">.   DEFINES</a></dd>
+                            <dd><a href="#structures-2">.   STRUCTURES</a></dd>
+                            <dd><a href="#globales-2">.   GLOBALES</a></dd>
+                            <dd><a href="#fonctions-2">.   FONCTIONS</a></dd>
+                        </dl>
+                        <article class="boxes-art">
+                            <span id="defines-2">
+                                <hr>
+                                <h2>DEFINES</h2>
+                                <hr>
+                            </span>
+                            <article class="boxes-content">
+                                <span>
+                                    <p>#define N 6
+</p>
+                                    <p></p>
+                                </span>
+                            </article>
+                        
+                </article>
+                <article class="boxes-art">
+                    <span id="structures-2">
+                        <hr>
+                        <h2>STRUCTURES</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>struct hello{
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    char message[20]; <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>typedef struct hello hello;
+</p><p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Un message venu de l'autre monde !<br><br><br></p></span></article>
+                    </article><article class="boxes-art">
+                    <span id="globales-2">
+                        <hr>
+                        <h2>GLOBALES</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>const int MAX = 30; <br></p><p>C'est juste le max qui sert à rien.<br></p></span></article>
+                    </article><article class="boxes-art">
+                    <span id="fonctions-2">
+                        <hr>
+                        <h2>FONCTIONS</h2>
+                        <hr>
+                    </span>
+                    <article class="boxes-content"><span><p>void sayHello(hello hello)
+</p><p> \brief Une fonction qui demande et affiche un message.<br> \detail Des messages venus des Enfers peuvent être envoyés ici.<br><br> \param hello C'est la structure qui contient le message :O<br></p></span></article></article></section>            <section>
+                <article class="boxes-art">
+                    <header>
+                        <h1></h1>
+                    </header>
+                </article>
+            </section>
+        </main>
+    </body>
+</html>
